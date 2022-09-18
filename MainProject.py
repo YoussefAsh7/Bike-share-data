@@ -181,6 +181,16 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+	
+def row_data(df):
+    view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n').lower().strip()
+    start_loc = 0
+    end_loc = 5
+    while (view_data == "yes"):
+        print(df.iloc[start_loc:end_loc])
+        start_loc += 5
+        end_loc += 5
+        view_data = input("Do you wish to continue?: ").lower().strip()
 
 def main():
     while True:
@@ -191,8 +201,9 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+	row_data(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        restart = input('\nWould you like to restart? Enter yes or no.\n').lower().strip()
         if restart.lower() != 'yes':
             break
 
